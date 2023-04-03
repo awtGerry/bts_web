@@ -1,3 +1,11 @@
+#[derive(Debug)]
+struct Match {
+    home_name: String,
+    home_goals: i8,
+    away_name: String,
+    away_goals: i8
+}
+
 fn main() {
     let url = "https://www.laliga.com/laliga-santander/resultados";
     let _class = "styled__ShieldContainer-lo8ov8-0 PIIgU";
@@ -7,8 +15,12 @@ fn main() {
         .unwrap();
     let document = scraper::Html::parse_document(&client);
     let teams_selector = scraper::Selector::parse(".hvREvZ").unwrap();
-    let teams = document.select(&teams_selector).map(|x| x.inner_html());
-    teams
-        .zip(1..25)
-        .for_each(|(item, number)| println!("{}. {}", number, item));
+    let mut teams = document.select(&teams_selector).map(|x| x.inner_html());
+    let new_match: Match = Match {
+        home_name: teams.nth(0).unwrap().to_string(),
+        home_goals: 0,
+        away_name: teams.nth(0).unwrap().to_string(),
+        away_goals: 0
+    };
+    println!("{:#?}", new_match);
 }
