@@ -1,4 +1,4 @@
-mod api_search;
+mod scraper;
 fn main() {
-    api_search::main();
+    scraper::main();
 }
