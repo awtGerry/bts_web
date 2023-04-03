@@ -1,17 +1,28 @@
 // use scraper::{Html, Selector};
 
-struct Match {
-    home_name: String,
-    home_res: i8,
-    away_name: String,
-    away_res: i8
-}
+// pub async fn req_client(url: &str) -> Result<(), Box<dyn std::error::Error>> {
+//     // let mut laliga = reqwest::get(url);
+//     // assert!(laliga.status().is_sucess());
+//     // let body = Html::parse_document(&laliga.text().unwrap());
+//     // let teams = Selector::parse(".styled__TextRegularStyled-sc-1raci4c-0 hvREvZ").unwrap();
+//     // for teams in body.select(&teams) {
+//     //     let teams = teams.text().collect::<Vec<_>>();
+//     //     println!("{}", teams[0]);
+//     // }
+//     let client = reqwest::Client::new();
+//     let laliga = client.get("https://www.laliga.com/laliga-santander/resultados")
+//         .send()
+//         .await?
+//         .text()
+//         .await?;
+//     println!("{:#?}", laliga);
 
-#[tokio::main]
-pub async fn main() -> Result<(), reqwest::Error> {
-    let url = "https://www.laliga.com/laliga-santander/resultados";
+//     Ok(())
+// }
+pub async fn req_client() -> Result<(), reqwest::Error> {
+    let _class = ".styled__TextRegularStyled-sc-1raci4c-0 hvREvZ";
     let laliga = reqwest::Client::new()
-        .get(url)
+        .get("https://www.laliga.com/laliga-santander/resultados")
         .send()
         .await?
         .text()
