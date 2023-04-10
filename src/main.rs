@@ -8,7 +8,6 @@ struct Match {
 
 fn main() {
     let url = "https://www.laliga.com/laliga-santander/resultados";
-    let _class = "styled__ShieldContainer-lo8ov8-0 PIIgU";
     let client = reqwest::blocking::get(url)
         .unwrap()
         .text()
